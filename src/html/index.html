@@ -15,15 +15,17 @@
             <input type="radio" id="route" name="type" value="bus_route" checked="checked">
             <span>노선</span>
         </label>
-        
+
         <label class="search_type">
             <input type="radio" id="stop" name="type" value="bus_stop">
             <span>정류장</span>
         </label>
 
         <form class = 'search_bal'>
-            <input id = 'keyword' type = 'search' maxlength = 255 value = "버스 번호 입력" autocomplete = "off">
-            <button class = "img-button" type = "submit" name = "click" value = "">
+            <input id = 'keyword' type = 'search' maxlength = 255 placeholder = "버스 번호 입력" onfocus='this.placeholder=""' 
+            onblur="this.placeholder='버스 번호 입력'" >
+
+            <button class = "img-button" type = "submit" name = "click" value = "" >
                 <i class="fas fa-search"></i>
             </button>
         </form>
