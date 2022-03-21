@@ -1,0 +1,17 @@
+.search_type input[type="radio"]{
+    display: none;
+}
+
+.search_type input[type="radio"] + span{
+    display: inline-block;
+    padding: 15px 10px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.search_type input[type="radio"]:checked + span{
+    background-color: #113a6b;
+    color: #ffffff;
+}

@@ -4,18 +4,22 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bus-Pet</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="../css/index.css" />
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     </head>
     <body>
         <h2>Bus Pet</h2>
-        <button class="favorite styled" type="button">
-            노선
-        </button>
-        <button class="favorite styled" type="button">
-            정류장
-        </button> </br>
-        <form class = 'search'>
+
+        <label class="search_type">
+            <input type="radio" id="route" name="type" value="bus_route" checked="checked">
+            <span>노선</span>
+        </label>
+        <label class="search_type">
+            <input type="radio" id="stop" name="type" value="bus_stop">
+            <span>정류장</span>
+        </label>
+
+        <form class = 'search_bal'>
             <input id = 'keyword' type = 'search' maxlength = 255 value = "" autocomplete = "off">
             <button class = "img-button" type = "submit" name = "click" value = "">
                 <i class="fas fa-search"></i>
