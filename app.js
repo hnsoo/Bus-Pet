@@ -10,7 +10,7 @@ const indexRouter = require('./routes');
 const searchRouter = require('./routes/search');
 
 app.use('/', indexRouter);
-app.use('/search', searchRouter);
+app.use('/search/route', searchRouter);
 
 const PORT = process.env.PORT || 5000;
 
