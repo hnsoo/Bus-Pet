@@ -13,15 +13,33 @@ function typeCheck(value) {
     }
 }
 
+const url = "http://localhost:5000"
 
+// 검색 기능
+document.getElementsByTagName("form")[0].onsubmit = () => {
+    const typeNodeList = document.getElementsByName('type');
+    const keyword = this.keyword.value;
+    
+    typeNodeList.forEach((node) => {
+        if(node.checked) {
+            if (node.value == 'bus_route') {
+                // 버스 노선 검색 api 호출
+                fetch(url + '/search/route/' + keyword)
+                    .then(res=>res.json())
+                    .then(json=>{
+                        console.log(keyword)
+                        console.log(json);
+                    })
+            }
+            else {
+                // 버스 정류장 검색 api 호출
+                fetch(url + '/search/station/' + keyword)
+                    .then(res=>res.json())
+                    .then(res=>{
 
-// const url = "http://localhost:5000"
-// // 검색 api 호출
-// let result = fetch(url + '/route' + '/4', {
-//     method: 'get'
-// })
-
-// result.then(res => res.json())
-//     .then(json => {
-
-//     })
+                    })
+            }
+        }
+    })
+    return false;
+}
