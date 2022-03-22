@@ -35,8 +35,9 @@ document.getElementsByTagName("form")[0].onsubmit = () => {
                 // 버스 정류장 검색 api 호출
                 fetch(url + '/search/station/' + keyword)
                     .then(res=>res.json())
-                    .then(res=>{
-
+                    .then(json=>{
+                        console.log(keyword)
+                        console.log(json);
                     })
             }
         }
