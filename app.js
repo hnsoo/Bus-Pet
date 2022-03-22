@@ -1,14 +1,18 @@
 const express = require("express")
+const http = require('http')
+const cors = require('cors')
+
 const app = express();
 const path = require("path")
 
 console.log(__dirname)
 
-app.use(express.static(path.join(__dirname, "src/html")))
+app.use(express.static(path.join(__dirname, 'src')))
 
 const indexRouter = require('./routes');
 const searchRouter = require('./routes/search');
 
+app.use(cors())
 app.use('/', indexRouter);
 app.use('/search/route', searchRouter);
 
