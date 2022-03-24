@@ -29,6 +29,10 @@ router.get('/route/:keyword', (req, res) => {
     })
 });
 
+router.post('/route', (req, res) => {
+    req.body
+})
+
 router.get('/station/:keyword', (req, res) => {
     let busStation = req.params.keyword;   // 버스 노선
 

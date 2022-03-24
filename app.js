@@ -8,6 +8,8 @@ const path = require("path")
 console.log(__dirname)
 
 app.use(express.static(path.join(__dirname, 'src')))
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 const indexRouter = require('./routes');
 const searchRouter = require('./routes/search');
