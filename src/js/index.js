@@ -27,6 +27,20 @@ document.getElementsByTagName("form")[0].onsubmit = () => {
                 fetch(url + '/search/route/' + keyword)
                     .then(res=>res.json())
                     .then(json=>{
+                        json.forEach(e=>{
+                            const bus = document.createElement("div");
+                            bus.append(e.routeId)
+                            bus.append(e.routeType)
+                            bus.append(e.routeNo)
+                            bus.append(e.startNodeNm)
+                            bus.append(e.endNodeNm)
+                            bus.setAttribute('id', e.routeId)
+                            bus.addEventListener("click", (e) => {
+                                console.log(e.target);
+                            })
+                            const list = document.getElementById("list");
+                            list.appendChild(bus)
+                        })
                         console.log(keyword)
                         console.log(json);
                     })

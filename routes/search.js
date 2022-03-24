@@ -12,7 +12,20 @@ router.get('/route/:keyword', (req, res) => {
             console.log('error: 버스 노선 조회 에러');
             return res.send({error});
         }
-        return res.send(result);
+        const obj = JSON.parse(result);
+        const arr = [];
+        obj.response.body.items.item.forEach(e => {
+            arr.push(
+            {
+                routeId: e.routeid,
+                routeType: e.routetp,
+                routeNo: e.routeno,
+                startNodeNm: e.startnodenm,
+                endNodeNm: e.endnodenm
+            }
+            )
+        });
+        return res.send(arr);
     })
 });
 
