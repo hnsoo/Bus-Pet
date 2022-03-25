@@ -16,7 +16,7 @@ const searchRouter = require('./routes/search');
 
 app.use(cors())
 app.use('/', indexRouter);
-app.use('/search', searchRouter);
+app.use('/', searchRouter);
 
 const PORT = process.env.PORT || 5000;
 
