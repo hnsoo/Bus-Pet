@@ -7,6 +7,7 @@
 
 ## 기술 스택
 언어: JavaScript
+
 프레임워크: node.js + express + ejs
 
 ## 활용 API
