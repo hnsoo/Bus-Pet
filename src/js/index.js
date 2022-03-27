@@ -24,7 +24,7 @@ document.getElementsByTagName("form")[0].onsubmit = () => {
         if(node.checked) {
             if (node.value == 'bus_route') {
                 // 버스 노선 검색 api 호출
-                fetch(url + '/search/route/' + keyword)
+                fetch(url + '/routes/' + keyword)
                     .then(res=>res.json())
                     .then(json=>{
                         json.forEach(e=>{
@@ -35,9 +35,7 @@ document.getElementsByTagName("form")[0].onsubmit = () => {
                             bus.append(e.startNodeNm)
                             bus.append(e.endNodeNm)
                             bus.setAttribute('id', e.routeId)
-                            bus.addEventListener("click", (e) => {
-                                console.log(e.target);
-                            })
+                            bus.addEventListener("click", () => {showBusRoute(e.routeId)} )
                             const list = document.getElementById("list");
                             list.appendChild(bus)
                         })
@@ -57,4 +55,13 @@ document.getElementsByTagName("form")[0].onsubmit = () => {
         }
     })
     return false;
+}
+
+function showBusRoute(routeId) {
+    console.log(routeId);
+    fetch(url + '/route' + '/' + routeId)
+        .then(res=>res.json())
+        .then(json=>{
+            console.log(json)
+        })
 }

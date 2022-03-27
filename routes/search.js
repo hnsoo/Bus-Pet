@@ -1,5 +1,4 @@
-import { getRouteNoList, getSttnNoList } from '../utils/data'
-
+const data = require('../utils/data')
 const express = require('express'); 
 const router = express.Router(); 
 
@@ -7,7 +6,7 @@ router.get('/routes/:keyword', (req, res) => {
     let busRoute = req.params.keyword;   // 버스 노선
 
     // 공공데이터 노선 검색 api 호출
-    getRouteNoList(busRoute, (error, {result}={})=>{
+    data.getRouteNoList(busRoute, (error, {result}={})=>{
         if(error){
             console.log('error: 버스 노선 조회 에러');
             return res.send({error});
@@ -33,7 +32,7 @@ router.get('/stations/:keyword', (req, res) => {
     let busStation = req.params.keyword;   // 버스 노선
 
     // 공공데이터 정류장 검색 api 호출
-    getSttnNoList(busStation, (error, {result}={})=>{
+    data.getSttnNoList(busStation, (error, {result}={})=>{
         if(error){
             console.log('error: 버스 정류장 조회 에러');
             return res.send({error});

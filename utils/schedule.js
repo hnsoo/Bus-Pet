@@ -63,4 +63,4 @@ function compareTime(time, endTime) {
     }
 }
 
-export { createSchedule };
+exports.createSchedule = createSchedule;

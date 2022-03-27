@@ -94,7 +94,7 @@ const getRouteAcctoThrghSttnList = (routeId, callback) => {
     );
 }
 
-
-
-
-export { getRouteNoList, getSttnNoList, getRouteInfoIem, getRouteAcctoThrghSttnList };
+exports.getRouteNoList = getRouteNoList;
+exports.getSttnNoList = getSttnNoList;
+exports.getRouteInfoIem = getRouteInfoIem;
+exports.getRouteAcctoThrghSttnList = getRouteAcctoThrghSttnList;

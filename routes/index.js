@@ -1,5 +1,5 @@
-import { createSchedule } from '../utils/schedule'
-import { getRouteInfoIem, getRouteAcctoThrghSttnList } from '../utils/data'
+const data = require('../utils/data')
+const schedule = require('../utils/schedule')
 
 const express = require('express'); 
 const path = require('path');
@@ -13,7 +13,7 @@ router.get('/route/:routeId', (req, res) => {
     const routeId = req.params.routeId;
     const resultRouteInfo = [];
     // 노선 세부 정보 조회 및 시간표 계산
-    getRouteInfoIem(routeId, (error, {result}={})=>{
+    data.getRouteInfoIem(routeId, (error, {result}={})=>{
         if(error){
             console.log('error: 버스 노선 상세 조회 에러');
             return res.send({error});
@@ -36,13 +36,14 @@ router.get('/route/:routeId', (req, res) => {
         // TODO: 실시간 위치
 
         // TODO: 기점 출발 시간 (1시간 단위로 전, 1시간 단위로후 최근)
-
+        console.log(typeof(e.startvehicletime));
+        console.log(e.intervaltime);
         // 노선 시간표
-        resultRouteInfo.push(createSchedule(e.startvehicletime, e.endvehicletime, e.intervaltime, e.intervalsattime, e.intervalsuntime))
+        resultRouteInfo.push(schedule.createSchedule(e.startvehicletime, e.endvehicletime, e.intervaltime, e.intervalsattime, e.intervalsuntime))
     });
 
     // 노선 경유 정류장 조회 
-    getRouteAcctoThrghSttnList(routeId, (error, {result}={})=>{
+    data.getRouteAcctoThrghSttnList(routeId, (error, {result}={})=>{
         if(error){
             console.log('error: 버스 경유 정류장 조회 에러');
             return res.send({error});
@@ -62,7 +63,8 @@ router.get('/route/:routeId', (req, res) => {
             )
         });
         resultRouteInfo.push({station: stations});
-    });
+    }); 
+    console.log({response: resultRouteInfo});
     res.render('bus', {response: resultRouteInfo});
 });
 
